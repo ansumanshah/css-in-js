@@ -1,0 +1,22 @@
+{
+  "name": "css-in-js",
+  "main": "./lib/css-in-js",
+  "version": "0.0.0",
+  "description": "Atom plugin for converting CSS to JS styles and vice versa",
+  "keywords": [
+    "atom",
+    "react",
+    "css-in-js",
+    "package"
+  ],
+  "activationCommands": {
+    "atom-workspace": "css-in-js:convert"
+  },
+  "repository": "https://github.com/ansumanshah/css-in-js",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+  }
+}

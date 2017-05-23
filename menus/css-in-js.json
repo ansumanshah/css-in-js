@@ -1,0 +1,26 @@
+{
+  "context-menu": {
+    "atom-text-editor": [
+      {
+        "label": "Convet CSS in JS",
+        "command": "css-in-js:convert"
+      }
+    ]
+  },
+  "menu": [
+    {
+      "label": "Packages",
+      "submenu": [
+        {
+          "label": "CSS in JS",
+          "submenu": [
+            {
+              "label": "Convert",
+              "command": "css-in-js:convert"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
