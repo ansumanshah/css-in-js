@@ -1,7 +1,7 @@
 {
   "name": "css-in-js",
   "main": "./lib/css-in-js",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Atom plugin for converting CSS to JS styles and vice versa",
   "keywords": [
     "atom",
