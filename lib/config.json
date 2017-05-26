@@ -1,0 +1,35 @@
+{
+  "silenceErrors": {
+    "title": "Silence Errors",
+    "description": "Don't show an error message if there is a problem parsing your code",
+    "type": "boolean",
+    "default": true,
+    "order": 1
+  },
+  "cssInJsOptions": {
+    "type": "object",
+    "order": 2,
+    "properties": {
+      "singleQuote": {
+        "title": "Single Quotes",
+        "description": "Use single instead of double quotes.",
+        "type": "boolean",
+        "default": true,
+        "order": 1
+      },
+      "snippet": {
+        "title": "Snippets",
+        "description": "Use either the [glamorous](https://github.com/paypal/glamorous), [glamor](https://github.com/threepointone/glamor), [jss](https://github.com/cssinjs/jss), [styled-components](https://github.com/styled-components/styled-components) snippet.",
+        "type": "string",
+        "default": "glamorous",
+        "enum": [
+          "glamorous",
+          "glamor",
+          "jss",
+          "styled-components"
+        ],
+        "order": 2
+      }
+    }
+  }
+}

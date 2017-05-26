@@ -17,5 +17,9 @@
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "css": "^2.2.1",
+    "stringify-object": "^3.2.0",
+    "stylis": "^3.0.4"
+  }
 }
