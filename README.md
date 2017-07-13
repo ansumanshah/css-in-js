@@ -6,7 +6,7 @@ Converts CSS between regular CSS syntax (strings) and CSS-in-JS syntax (style ob
 
 # Thanks
 
-Thanks to @ansumanshah for making [css-in-js](https://github.com/ansumanshah/css-in-js) for Atom. I basically copied what was done in that repo. 😃
+Thanks to [Ansuman Shah](https://github.com/ansumanshah) for making [css-in-js](https://github.com/ansumanshah/css-in-js) for Atom. I basically copied what was done in that repo. 😃
 
 ---
 
