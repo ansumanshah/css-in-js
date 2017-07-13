@@ -19,6 +19,7 @@
     "scripts": {
         "build": "babel src -d dist",
         "postinstall": "npm run build",
+        "vscode:prepublish": "npm run build",
         "prettier": "prettier-standard 'src/**/*.js'",
         "lint": "standard"
     },
