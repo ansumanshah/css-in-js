@@ -36,6 +36,14 @@
                 "command": "extension.convertCSSinJS",
                 "title": "Convert CSS-in-JS"
             }
+        ],
+        "keybindings": [
+            {
+                "command": "extension.convertCSSinJS",
+                "key": "ctrl+shift+j",
+                "mac": "cmd+shift+j",
+                "when": "editorTextFocus"
+            }
         ]
     },
     "devDependencies": {
