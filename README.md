@@ -4,7 +4,8 @@
 
 Converts CSS between regular CSS syntax (strings) and CSS-in-JS syntax (style objects)
 
-![](./demo.gif)
+![demo](https://user-images.githubusercontent.com/737065/28219279-6ffbf4c4-6889-11e7-8d3d-51637fe90856.gif)
+
 
 ## How to Use
 
