@@ -1,7 +1,8 @@
-# Change Log
-All notable changes to the "css-in-js" extension will be documented in this file.
+## 0.1.0
+- Add in keyboard shortcut for converting text
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+## 0.0.2
+- Change header color for VS Code marketplace
 
-## [Unreleased]
+## 0.0.1
 - Initial release
