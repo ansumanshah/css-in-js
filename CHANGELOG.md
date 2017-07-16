@@ -1,3 +1,6 @@
+## 0.2.0
+- Change current line if nothing is selected
+
 ## 0.1.0
 - Add in keyboard shortcut for converting text
 
