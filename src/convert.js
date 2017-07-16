@@ -8,21 +8,15 @@
 const getBeginningWhitespace = string =>
   string.match(/^\s+/) !== null ? string.match(/^\s+/)[0] : ''
 
-const isCSS = item => {
-  return (item.match(/;/g) || []).length === 1
-}
+const isCSS = item => (item.match(/;/g) || []).length === 1
 
-const isJS = item => {
-  return (item.match(/,/g) || []).length === 1
-}
+const isJS = item => (item.match(/,/g) || []).length === 1
 
-const toHyphen = prop => {
-  return prop.replace(/([A-Z])/g, char => `-${char[0].toLowerCase()}`)
-}
+const toHyphen = prop =>
+  prop.replace(/([A-Z])/g, char => `-${char[0].toLowerCase()}`)
 
-const toCamel = prop => {
-  return prop.replace(/-(\w|$)/g, (dash, next) => next.toUpperCase())
-}
+const toCamel = prop =>
+  prop.replace(/-(\w|$)/g, (dash, next) => next.toUpperCase())
 
 const toJS = item => {
   const [prop, val] = item.split(':')
