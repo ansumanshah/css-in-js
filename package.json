@@ -2,8 +2,13 @@
     "name": "convert-css-in-js",
     "displayName": "Convert CSS-in-JS",
     "description": "Convert kebab-case CSS to camelCase CSS and vice versa",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "publisher": "paulmolluzzo",
+    "author": {
+        "email": "paul@molluzzo.com",
+        "name": "Paul Molluzzo",
+        "url": "https://paul.molluzzo.com"
+    },
     "license": "MIT",
     "homepage": "https://github.com/paulmolluzzo/convert-css-in-js",
     "bugs": {
@@ -24,7 +29,14 @@
         "lint": "standard"
     },
     "categories": [
-        "Other"
+        "Other",
+        "Formatters"
+    ],
+    "keywords": [
+        "css",
+        "css-in-js",
+        "keybindings",
+        "javascript"
     ],
     "activationEvents": [
         "onCommand:extension.convertCSSinJS"
