@@ -2,7 +2,7 @@
   "context-menu": {
     "atom-text-editor": [
       {
-        "label": "Convet CSS in JS",
+        "label": "Convert CSS in JS",
         "command": "css-in-js:convert"
       }
     ]
