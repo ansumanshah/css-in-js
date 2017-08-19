@@ -9,7 +9,7 @@ Converts CSS between regular CSS syntax (strings) and CSS-in-JS syntax (style ob
 
 ## How to Use
 
-Select some block of text in a `javascript` file and use `cmd+shift+p` to bring up the command palette, then select `Convert CSS-in-JS`.
+Select some block of text in a `javascript` or `typescript` file and use `cmd+shift+p` to bring up the command palette, then select `Convert CSS-in-JS`.
 
 Or use the keyboard shortcut `cmd+shift+j` (`ctrl+shift+j` on Windows).
 

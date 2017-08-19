@@ -2,7 +2,7 @@
     "name": "convert-css-in-js",
     "displayName": "Convert CSS-in-JS",
     "description": "Convert kebab-case CSS to camelCase CSS and vice versa",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "publisher": "paulmolluzzo",
     "author": {
         "email": "paul@molluzzo.com",

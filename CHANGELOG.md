@@ -1,3 +1,6 @@
+## 0.3.0
+- Add support for typescript files
+
 ## 0.2.1
 - Update package.json info for marketplace
 
