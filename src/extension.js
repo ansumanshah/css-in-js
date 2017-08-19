@@ -26,7 +26,7 @@ function activate (context) {
       const editor = vscode.window.activeTextEditor
 
       // return if there's no editor or it's not a javascript file
-      if (!editor || !/javascript/.test(editor.document.languageId)) {
+      if (!editor || !/javascript|typescript/.test(editor.document.languageId)) {
         return
       }
 
