@@ -1,14 +1,21 @@
 {
+  "cssRegEx": {
+    "title": "Autocomplete RegEx",
+    "description": "Will work on function names satisfying the following fields",
+    "type": "string",
+    "default": "glamorous|css|StyleSheet.create",
+    "order": 1
+  },
   "silenceErrors": {
     "title": "Silence Errors",
     "description": "Don't show an error message if there is a problem parsing your code",
     "type": "boolean",
     "default": true,
-    "order": 1
+    "order": 2
   },
   "cssInJsOptions": {
     "type": "object",
-    "order": 2,
+    "order": 3,
     "properties": {
       "singleQuote": {
         "title": "Single Quotes",
@@ -22,12 +29,7 @@
         "description": "Use either the [glamorous](https://github.com/paypal/glamorous), [glamor](https://github.com/threepointone/glamor), [jss](https://github.com/cssinjs/jss), [styled-components](https://github.com/styled-components/styled-components) snippet.",
         "type": "string",
         "default": "glamorous",
-        "enum": [
-          "glamorous",
-          "glamor",
-          "jss",
-          "styled-components"
-        ],
+        "enum": ["glamorous", "glamor", "jss", "styled-components"],
         "order": 2
       }
     }

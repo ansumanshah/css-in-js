@@ -1,25 +1,40 @@
 {
   "name": "css-in-js",
   "main": "./lib/css-in-js",
-  "version": "0.2.0",
+  "version": "0.3.1",
   "description": "Atom plugin for converting CSS to JS styles and vice versa",
+  "repository": "https://github.com/ansumanshah/css-in-js",
+  "license": "MIT",
+  "providedServices": {
+    "autocomplete.provider": {
+      "versions": {
+        "2.0.0": "getProvider"
+      }
+    }
+  },
+  "scripts": {
+    "update-css": "node scripts/completions.js"
+  },
   "keywords": [
     "atom",
     "react",
+    "react-native",
+    "autocomplete",
+    "inline",
     "css-in-js",
-    "package"
+    "glamour",
+    "glamourous",
+    "snippets"
   ],
-  "activationCommands": {
-    "atom-workspace": "css-in-js:convert"
-  },
-  "repository": "https://github.com/ansumanshah/css-in-js",
-  "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
     "css": "^2.2.1",
-    "stringify-object": "^3.2.0",
-    "stylis": "^3.0.4"
+    "stringify-object": "^3.2.0"
+  },
+  "devDependencies": {
+    "path": "^0.12.7",
+    "request": "^2.81.0"
   }
 }
