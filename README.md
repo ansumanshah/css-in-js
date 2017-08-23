@@ -26,3 +26,7 @@ This is basically a fork of [autocomplete-css](https://github.com/atom/autocompl
 `ctrl-alt-j` to convert the css lines to js
 
 ![Example](./example.gif)
+
+Comming Soon
+
+*Codemods for easy shifting between css-in-js libraries*
