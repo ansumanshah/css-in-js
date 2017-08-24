@@ -27,6 +27,6 @@ This is basically a fork of [autocomplete-css](https://github.com/atom/autocompl
 
 ![Example](./example.gif)
 
-Comming Soon
+Coming Soon
 
 *Codemods for easy shifting between css-in-js libraries*
