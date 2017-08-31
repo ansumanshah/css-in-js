@@ -6,9 +6,9 @@
     "default": "glamorous|css|StyleSheet.create",
     "order": 1
   },
-  "silenceErrors": {
-    "title": "Silence Errors",
-    "description": "Don't show an error message if there is a problem parsing your code",
+  "rnStyles": {
+    "title": "React Native Styles",
+    "description": "Show React Native specific styles for StyleSheet.create()",
     "type": "boolean",
     "default": true,
     "order": 2
@@ -26,12 +26,19 @@
       },
       "snippet": {
         "title": "Snippets",
-        "description": "Use either the [glamorous](https://github.com/paypal/glamorous), [glamor](https://github.com/threepointone/glamor), [jss](https://github.com/cssinjs/jss), [styled-components](https://github.com/styled-components/styled-components) snippet.",
+        "description": "Use either the [glamorous](https://github.com/paypal/glamorous), [glamor](https://github.com/threepointone/glamor) snippet.",
         "type": "string",
         "default": "glamorous",
-        "enum": ["glamorous", "glamor", "jss", "styled-components"],
+        "enum": ["glamorous", "glamor"],
         "order": 2
       }
     }
+  },
+  "silenceErrors": {
+    "title": "Silence Errors",
+    "description": "Don't show an error message if there is a problem parsing your code",
+    "type": "boolean",
+    "default": true,
+    "order": 4
   }
 }

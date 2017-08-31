@@ -27,12 +27,15 @@ const propertiesPromise = new Promise(resolve =>
 
 const propertyDescriptionsPromise = fetchDocs();
 
+const hyphentoCamel = prop =>
+  prop.replace(/-(\w|$)/g, (dash, next) => next.toUpperCase());
+
 Promise.all([propertiesPromise, propertyDescriptionsPromise]).then(values => {
   const properties = {};
   const propertiesRaw = values[0];
   const propertyDescriptions = values[1];
   const sortedPropertyNames = JSON.parse(
-    fs.readFileSync(path.join(__dirname, 'css/sorted-property-names.json'))
+    fs.readFileSync(path.join(__dirname, 'sorted-property-names.json'))
   );
   for (var propertyName of Array.from(sortedPropertyNames)) {
     let metadata;
@@ -40,7 +43,7 @@ Promise.all([propertiesPromise, propertyDescriptionsPromise]).then(values => {
       continue;
     }
     metadata.description = propertyDescriptions[propertyName];
-    properties[propertyName] = metadata; // Converting only propertyName to camelcase
+    properties[hyphentoCamel(propertyName)] = metadata;
     if (propertyDescriptions[propertyName] == null) {
       console.warn(`No description for property ${propertyName}`);
     }
@@ -55,15 +58,16 @@ Promise.all([propertiesPromise, propertyDescriptionsPromise]).then(values => {
   }
 
   const tags = JSON.parse(
-    fs.readFileSync(path.join(__dirname, 'css/html-tags.json'))
+    fs.readFileSync(path.join(__dirname, 'html-tags.json'))
   );
   const pseudoSelectors = JSON.parse(
-    fs.readFileSync(path.join(__dirname, 'css/pseudo-selectors.json'))
+    fs.readFileSync(path.join(__dirname, 'pseudo-selectors.json'))
   );
 
-  const completions = {tags, properties, pseudoSelectors};
-  return fs.writeFileSync(
-    path.join(__dirname, '../completions.json'), //root folder
-    `${JSON.stringify(completions, null, '  ')}\n`
+  const completions = {properties, pseudoSelectors, tags};
+  return fs.writeFile(
+    path.join(__dirname, '../../completions-css.json'), //root folder
+    `${JSON.stringify(completions, null, '  ')}\n`,
+    error => (error ? console.log(error) : console.log('Done'))
   );
 });
