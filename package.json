@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "path": "^0.12.7",
-    "react-docgen": "next",
+    "react-docgen": "3.0.0-beta6",
     "react-native": "^0.47.2",
     "request": "^2.81.0"
   }

@@ -2712,7 +2712,7 @@ react-devtools-core@2.3.1:
     shell-quote "^1.6.1"
     ws "^2.0.3"
 
-react-docgen@next:
+react-docgen@3.0.0-beta6:
   version "3.0.0-beta6"
   resolved "https://registry.yarnpkg.com/react-docgen/-/react-docgen-3.0.0-beta6.tgz#2827b52c52b8644722e0e215c5bf7c15c0458c34"
   dependencies:
