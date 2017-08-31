@@ -2,7 +2,7 @@
   "name": "css-in-js",
   "main": "./lib/css-in-js",
   "version": "1.1.0",
-  "description": "Autocomplete JS styles and converting CSS to JS styles and vice versa",
+  "description": "Autocomplete JS and React Native styles, and converting copied CSS to JS styles and vice versa",
   "repository": "https://github.com/ansumanshah/css-in-js",
   "license": "MIT",
   "providedServices": {
@@ -22,9 +22,8 @@
     "react-native",
     "autocomplete",
     "inline",
-    "css-in-js",
-    "glamour",
     "glamourous",
+    "glamour",
     "snippets"
   ],
   "engines": {
