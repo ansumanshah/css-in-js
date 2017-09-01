@@ -18,10 +18,9 @@
   },
   "keywords": [
     "atom",
+    "autocomplete",
     "react",
     "react-native",
-    "autocomplete",
-    "inline",
     "glamourous",
     "glamour",
     "snippets"
