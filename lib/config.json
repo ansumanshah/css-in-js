@@ -3,7 +3,7 @@
     "title": "Autocomplete RegEx",
     "description": "Will work on function names satisfying the following fields",
     "type": "string",
-    "default": "glamorous|css|StyleSheet.create",
+    "default": "glamorous|css|style|StyleSheet.create",
     "order": 1
   },
   "rnStyles": {
