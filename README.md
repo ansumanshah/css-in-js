@@ -12,6 +12,8 @@ apm install css-in-js
 ```
 Or go to Settings → Install and search for `css-in-js`
 
+<a href="https://app.codesponsor.io/link/jZ7oK2ZsGezatDv9YZW6fM3e/ansumanshah/css-in-js" rel="nofollow"><img src="https://app.codesponsor.io/embed/jZ7oK2ZsGezatDv9YZW6fM3e/ansumanshah/css-in-js.svg" style="width: 888px; height: 68px;" alt="Sponsor" /></a>
+
 ## Usage
 ```js
 const btnA = css({ /* styles */ });
