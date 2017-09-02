@@ -2,10 +2,7 @@
 
 [![PRs Welcome][prs-badge]][prs]
 [![Version][version-badge]][package]
-[![Downloads][downloads-badge]][package]
 [![MIT License][license-badge]][LICENSE]
-
-*WIP*
 
 Now get Autocomplete for CSSinJS libraries using object styles.
 
@@ -24,6 +21,8 @@ const btnC = StyleSheet.create({ /* styles */ });
 Only works for these keywords by default you can edit in settings for more.
 
 `glamorous | css | StyleSheet.create`
+
+![ReactNative][native-demo]
 
 ![Autocomplete][autocomplete-demo]
 
@@ -44,6 +43,7 @@ Coming Soon
 *Codemods for easy shifting between css-in-js libraries*
 
 [autocomplete-demo]: https://github.com/ansumanshah/css-in-js/raw/master/cssinjs.gif
+[native-demo]: https://github.com/ansumanshah/css-in-js/raw/master/native.gif
 [converter-demo]: https://github.com/ansumanshah/css-in-js/raw/master/example.gif
 
 [github-star-badge]: https://img.shields.io/github/stars/ansumanshah/css-in-js.svg?style=social
@@ -53,7 +53,6 @@ Coming Soon
 
 [version-badge]: https://img.shields.io/apm/v/css-in-js.svg?style=flat-square
 [package]: https://atom.io/packages/css-in-js
-[downloads-badge]: https://img.shields.io/apm/dm/css-in-js.svg?style=flat-square
 [license-badge]: https://img.shields.io/apm/l/css-in-js.svg?style=flat-square
 [license]: https://github.com/ansumanshah/css-in-js/blob/master/LICENSE
 [prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
