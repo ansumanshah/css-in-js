@@ -3,7 +3,7 @@
 const CSS_COMPLETIONS = require('../completions-css.json');
 const RN_COMPLETIONS = require('../completions-rn.json');
 
-const firstInlinePropertyNameWithColonPattern = /{\s*(\S+)\s*:/; // example { display: }
+const firstInlinePropertyNameWithColonPattern = /(?:{{|{)\s*(\S+)\s*:/; // example { display: }
 const inlinePropertyNameWithColonPattern = /(?:,.+?)*,\s*(\S+)\s*:/; // example { display: block, float: left, color: } (match the last one)
 const inlinePropertyStartWithColonPattern = /(?::.+?)*,\s*/; // example { display: block, float: left, co } (match the last one)
 const propertyNameWithColonPattern = /^\s*(\S+)\s*:/; // display:
@@ -30,7 +30,12 @@ module.exports = {
   rnStyles: false,
 
   getSuggestions(request) {
-    const pos = getStartingPosition(request);
+    scopes = request.scopeDescriptor.getScopesArray();
+    isJSX = hasScope(scopes, 'JSXAttrs');
+
+    const pos = isJSX
+      ? getStartingPosition(request, '{', '}')
+      : getStartingPosition(request);
     if (pos == null) {
       // Exclude undefined
       return;
