@@ -1,0 +1,40 @@
+{
+  "name": "css-in-js",
+  "main": "./lib/css-in-js",
+  "version": "1.4.0",
+  "description": "Autocomplete JS and React Native styles, and converting copied CSS to JS styles and vice versa",
+  "repository": "https://github.com/ansumanshah/css-in-js",
+  "license": "MIT",
+  "providedServices": {
+    "autocomplete.provider": {
+      "versions": {
+        "2.0.0": "getProvider"
+      }
+    }
+  },
+  "scripts": {
+    "update-css": "node scripts/css/completions.js",
+    "update-rn": "node scripts/rn/completions.js"
+  },
+  "keywords": [
+    "atom",
+    "autocomplete",
+    "react",
+    "react-native",
+    "glamourous",
+    "glamour",
+    "snippets"
+  ],
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+    "css": "^2.2.1",
+    "stringify-object": "^3.2.0"
+  },
+  "devDependencies": {
+    "path": "^0.12.7",
+    "react-docgen": "3.0.0-beta6",
+    "request": "^2.81.0"
+  }
+}
