@@ -1,11 +1,11 @@
 import vscode from 'vscode'
 import convert from 'css-in-js-helpers'
 
-function positionFactory (positionObj) {
+function positionFactory(positionObj) {
   return new vscode.Position(positionObj._line, positionObj._character)
 }
 
-function rangeFactory (selection, length) {
+function rangeFactory(selection, length) {
   if (length === 0) {
     selection.start._character = 0
     selection.end._character = vscode.window.activeTextEditor.document.lineAt(
@@ -19,14 +19,17 @@ function rangeFactory (selection, length) {
   )
 }
 
-function activate (context) {
+function activate(context) {
   const disposable = vscode.commands.registerCommand(
     'extension.convertCSSinJS',
     () => {
       const editor = vscode.window.activeTextEditor
 
       // return if there's no editor or it's not a javascript file
-      if (!editor || !/javascript|typescript/.test(editor.document.languageId)) {
+      if (
+        !editor ||
+        !/javascript|typescript/.test(editor.document.languageId)
+      ) {
         return
       }
 

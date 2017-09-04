@@ -1,6 +1,6 @@
-'use babel';
+'use babel'
 
-import CssInJs from '../lib/css-in-js';
+import CssInJs from '../lib/css-in-js'
 
 // Use the command `window:run-package-specs` (cmd-alt-ctrl-p) to run specs.
 //
@@ -8,10 +8,10 @@ import CssInJs from '../lib/css-in-js';
 // or `fdescribe`). Remove the `f` to unfocus the block.
 
 describe('CssInJs', () => {
-  let workspaceElement, activationPromise;
+  let workspaceElement, activationPromise
 
   beforeEach(() => {
-    workspaceElement = atom.views.getView(atom.workspace);
-    activationPromise = atom.packages.activatePackage('css-in-js');
-  });
-});
+    workspaceElement = atom.views.getView(atom.workspace)
+    activationPromise = atom.packages.activatePackage('css-in-js')
+  })
+})
