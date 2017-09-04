@@ -1,5 +1,5 @@
 import vscode from 'vscode'
-import convert from './convert.js'
+import convert from 'css-in-js-helpers'
 
 function positionFactory (positionObj) {
   return new vscode.Position(positionObj._line, positionObj._character)

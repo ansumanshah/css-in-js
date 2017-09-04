@@ -1,0 +1,20 @@
+{
+  "name": "css-in-js-helpers",
+  "version": "1.0.0",
+  "description": "CSS in JS helpers",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ansumanshah/css-in-js.git"
+  },
+  "keywords": [
+    "CSSinJS"
+  ],
+  "author": "Ansuman Shah",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ansumanshah/css-in-js/issues"
+  },
+  "homepage": "https://github.com/ansumanshah/css-in-js#readme"
+}
