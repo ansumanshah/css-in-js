@@ -31,3 +31,14 @@ export default function convert(s) {
     .map(item => (isCSS(item) ? toJS(item) : isJS(item) ? toCSS(item) : item))
     .join('\n')
 }
+export const firstCharsEqual = (str1, str2) => str1[0].toLowerCase() === str2[0].toLowerCase()
+export const firstInlinePropertyNameWithColonPattern = /(?:{{|{)\s*(\S+)\s*:/
+export const inlinePropertyNameWithColonPattern = /(?:,.+?)*,\s*(\S+)\s*:/
+export const inlinePropertyStartWithColonPattern = /(?::.+?)*,\s*/
+export const propertyNameWithColonPattern = /^\s*(\S+)\s*:/
+export const propertyNamePrefixPattern = /[a-zA-Z]+[-a-zA-Z]*$/
+export const pseudoSelectorPrefixPattern = /\':(:)?([a-z]+[a-z-]*)?(\')?$/
+export const tagSelectorPrefixPattern = /(^|\s|,)([a-z]+)?$/
+export const importantPrefixPattern = /(![a-z]+)$/
+export const cssDocsURL = 'https://developer.mozilla.org/en-US/docs/Web/CSS'
+export const rnDocsURL = 'https://facebook.github.io/react-native/docs'
