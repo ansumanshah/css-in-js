@@ -71,7 +71,7 @@
         "vscode": "^1.0.0"
     },
     "dependencies": {
-        "css-in-js-helpers": "^1.0.0"
+        "css-in-js-helpers": "^1.0.1"
     },
     "icon": "icon.png",
     "galleryBanner": {

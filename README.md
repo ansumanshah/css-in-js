@@ -1,7 +1,6 @@
-# CSS in JS Plugins for Atom and VS Code
+# Autocomplete for React Native and css-in-js for Atom and VS Code
 
-# Autocomplete for React Native and css-in-js [![Star on GitHub][github-star-badge]][github-star][![Tweet][twitter-badge]][twitter]
-
+[![Star on GitHub][github-star-badge]][github-star][![Tweet][twitter-badge]][twitter]
 [![PRs Welcome][prs-badge]][prs]
 [![Version][version-badge]][package]
 [![MIT License][license-badge]][LICENSE]
