@@ -112,7 +112,8 @@ module.exports = {
       completions.push(
         this.vsCompletionItem(
           'important',
-          'Forces this property to override any other declaration of the same property. Use with caution.'
+          'Forces this property to override any other declaration of the same property. Use with caution.',
+          `${cssDocsURL}/Specificity#The_!important_exception`
         )
       )
     }
@@ -141,18 +142,19 @@ module.exports = {
   },
 
   buildPropertyNameCompletion(propertyName, { description }) {
-    return this.vsCompletionItem(propertyName, description, `${propertyName}: `)
+    return this.vsCompletionItem(propertyName, description, `${cssDocsURL}/${toHyphen(propertyName)}`, `${propertyName}: `)
   },
 
   buildPropertyValueCompletion(propertyName, value, addComma) {
     const text = `'${value}'${addComma ? ',' : ''}`
     const detail = `${value} value for the ${propertyName} property`
-    return this.vsCompletionItem(value, detail, text)
+    return this.vsCompletionItem(value, detail, `${cssDocsURL}/${toHyphen(propertyName)}#Values`, text)
   },
 
-  vsCompletionItem(text, detail, insertedText = false) {
+  vsCompletionItem(text, detail, documentation = '', insertedText = false) {
     const item = new vscode.CompletionItem(text, vscode.CompletionItemKind.Property)
     item.detail = detail
+    item.documentation = documentation
     item.insertText = insertedText
     return item
   }
