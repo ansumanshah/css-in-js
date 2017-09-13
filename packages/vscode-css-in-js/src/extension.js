@@ -1,5 +1,6 @@
 import vscode from 'vscode'
 import convert from 'css-in-js-helpers'
+import autocomplete from './autocomplete'
 
 function positionFactory(positionObj) {
   return new vscode.Position(positionObj._line, positionObj._character)
@@ -20,7 +21,7 @@ function rangeFactory(selection, length) {
 }
 
 function activate(context) {
-  const disposable = vscode.commands.registerCommand(
+  const convertCommand = vscode.commands.registerCommand(
     'extension.convertCSSinJS',
     () => {
       const editor = vscode.window.activeTextEditor
@@ -42,8 +43,32 @@ function activate(context) {
       editor.edit(builder => builder.replace(range, convert(convertableText)))
     }
   )
+  const codeCompletion = vscode.languages.registerCompletionItemProvider('javascript', {
+    provideCompletionItems(document, position, token) {
+      const start = new vscode.Position(position.line, 0);
+      const range = new vscode.Range(start, position);
+      const text = document.getText(range);
 
-  context.subscriptions.push(disposable)
+      // TODO: psuedo selectors
+      // if (autocomplete.isCompletingPseudoSelector(text)) {
+      //   return autocomplete.getPseudoSelectorCompletions(text)
+      // }
+
+      if (autocomplete.isCompletingValue(text)) {
+        return autocomplete.getPropertyValueCompletions(text)
+      }
+
+      if (autocomplete.isCompletingName(text)) {
+        return autocomplete.getPropertyNameCompletions(text)
+      }
+    },
+    resolveCompletionItem(item, token) {
+      return item;
+    }
+  });
+
+  context.subscriptions.push(convertCommand)
+  context.subscriptions.push(codeCompletion)
 }
 
 module.exports = { activate }

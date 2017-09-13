@@ -39,7 +39,8 @@
         "javascript"
     ],
     "activationEvents": [
-        "onCommand:extension.convertCSSinJS"
+        "onCommand:extension.convertCSSinJS",
+        "onLanguage:javascript"
     ],
     "main": "./dist/extension.js",
     "contributes": {
@@ -57,6 +58,12 @@
                 "when": "editorTextFocus"
             }
         ]
+    },
+    "capabilities" : {
+        "completionProvider" : {
+            "resolveProvider": "true",
+            "triggerCharacters": ["."]
+        }
     },
     "devDependencies": {
         "@types/node": "^6.0.40",
