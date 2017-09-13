@@ -141,18 +141,19 @@ module.exports = {
   },
 
   buildPropertyNameCompletion(propertyName, { description }) {
-    return this.vsCompletionItem(propertyName, description)
+    return this.vsCompletionItem(propertyName, description, `${propertyName}: `)
   },
 
   buildPropertyValueCompletion(propertyName, value, addComma) {
     const text = `'${value}'${addComma ? ',' : ''}`
     const detail = `${value} value for the ${propertyName} property`
-    return this.vsCompletionItem(text, detail)
+    return this.vsCompletionItem(value, detail, text)
   },
 
-  vsCompletionItem(text, detail) {
+  vsCompletionItem(text, detail, insertedText = false) {
     const item = new vscode.CompletionItem(text, vscode.CompletionItemKind.Property)
     item.detail = detail
+    item.insertText = insertedText
     return item
   }
 }
