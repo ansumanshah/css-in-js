@@ -50,9 +50,9 @@ function activate(context) {
       const text = document.getText(range);
 
       // TODO: psuedo selectors
-      // if (autocomplete.isCompletingPseudoSelector(text)) {
-      //   return autocomplete.getPseudoSelectorCompletions(text)
-      // }
+      if (autocomplete.isCompletingPseudoSelector(text)) {
+        return autocomplete.getPseudoSelectorCompletions(text)
+      }
 
       if (autocomplete.isCompletingValue(text)) {
         return autocomplete.getPropertyValueCompletions(text)

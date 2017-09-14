@@ -60,7 +60,8 @@ module.exports = {
 
   getPseudoSelectorCompletions(text) {
     const completions = []
-    let prefix = this.getPseudoSelectorPrefix(text).replace("'", '')
+    const prefix = this.getPseudoSelectorPrefix(text).replace("'", '')
+    const colonsFromText = text.trim().match(/:?:/)[0] || ''
 
     if (!prefix) {
       return null
@@ -70,7 +71,7 @@ module.exports = {
       const options = this.pseudoSelectors[pseudoSelector]
       if (firstCharsEqual(pseudoSelector, prefix)) {
         completions.push(
-          this.buildPseudoSelectorCompletion(pseudoSelector, options)
+          this.buildPseudoSelectorCompletion(pseudoSelector, options, colonsFromText)
         )
       }
     }
@@ -137,8 +138,8 @@ module.exports = {
   },
 
   // TODO: DRY this up
-  buildPseudoSelectorCompletion(pseudoSelector, { description }) {
-    return this.vsCompletionItem(pseudoSelector, description)
+  buildPseudoSelectorCompletion(pseudoSelector, { description }, colonsFromText) {
+    return this.vsCompletionItem(pseudoSelector, description, `${cssDocsURL}/${pseudoSelector}`, pseudoSelector.replace(colonsFromText, ''))
   },
 
   buildPropertyNameCompletion(propertyName, { description }) {
