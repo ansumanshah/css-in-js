@@ -59,10 +59,12 @@
             }
         ]
     },
-    "capabilities" : {
-        "completionProvider" : {
+    "capabilities": {
+        "completionProvider": {
             "resolveProvider": "true",
-            "triggerCharacters": ["."]
+            "triggerCharacters": [
+                "."
+            ]
         }
     },
     "devDependencies": {
