@@ -50,6 +50,15 @@
                 "title": "Convert CSS-in-JS"
             }
         ],
+        "configurationDefaults": {
+            "[javascript]": {
+                "editor.quickSuggestions": {
+                    "other": true,
+                    "comments": true,
+                    "strings": true
+                }
+            }
+        },
         "keybindings": [
             {
                 "command": "extension.convertCSSinJS",
