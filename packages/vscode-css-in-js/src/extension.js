@@ -2,11 +2,11 @@ import vscode from 'vscode'
 import convert from 'css-in-js-helpers'
 import autocomplete from './autocomplete'
 
-function positionFactory(positionObj) {
+function positionFactory (positionObj) {
   return new vscode.Position(positionObj._line, positionObj._character)
 }
 
-function rangeFactory(selection, length) {
+function rangeFactory (selection, length) {
   if (length === 0) {
     selection.start._character = 0
     selection.end._character = vscode.window.activeTextEditor.document.lineAt(
@@ -20,7 +20,7 @@ function rangeFactory(selection, length) {
   )
 }
 
-function activate(context) {
+function activate (context) {
   const convertCommand = vscode.commands.registerCommand(
     'extension.convertCSSinJS',
     () => {
@@ -43,29 +43,32 @@ function activate(context) {
       editor.edit(builder => builder.replace(range, convert(convertableText)))
     }
   )
-  const codeCompletion = vscode.languages.registerCompletionItemProvider('javascript', {
-    provideCompletionItems(document, position, token) {
-      const start = new vscode.Position(position.line, 0);
-      const range = new vscode.Range(start, position);
-      const text = document.getText(range);
+  const codeCompletion = vscode.languages.registerCompletionItemProvider(
+    'javascript',
+    {
+      provideCompletionItems (document, position, token) {
+        const start = new vscode.Position(position.line, 0)
+        const range = new vscode.Range(start, position)
+        const text = document.getText(range)
 
-      // TODO: psuedo selectors
-      if (autocomplete.isCompletingPseudoSelector(text)) {
-        return autocomplete.getPseudoSelectorCompletions(text)
-      }
+        // TODO: psuedo selectors
+        if (autocomplete.isCompletingPseudoSelector(text)) {
+          return autocomplete.getPseudoSelectorCompletions(text)
+        }
 
-      if (autocomplete.isCompletingValue(text)) {
-        return autocomplete.getPropertyValueCompletions(text)
-      }
+        if (autocomplete.isCompletingValue(text)) {
+          return autocomplete.getPropertyValueCompletions(text)
+        }
 
-      if (autocomplete.isCompletingName(text)) {
-        return autocomplete.getPropertyNameCompletions(text)
+        if (autocomplete.isCompletingName(text)) {
+          return autocomplete.getPropertyNameCompletions(text)
+        }
+      },
+      resolveCompletionItem (item, token) {
+        return item
       }
-    },
-    resolveCompletionItem(item, token) {
-      return item;
     }
-  });
+  )
 
   context.subscriptions.push(convertCommand)
   context.subscriptions.push(codeCompletion)

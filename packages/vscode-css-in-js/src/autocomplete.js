@@ -5,14 +5,10 @@ import {
   isPropertyValuePrefix,
   firstInlinePropertyNameWithColonPattern,
   inlinePropertyNameWithColonPattern,
-  inlinePropertyStartWithColonPattern,
   propertyNameWithColonPattern,
   propertyNamePrefixPattern,
   pseudoSelectorPrefixPattern,
-  tagSelectorPrefixPattern,
-  importantPrefixPattern,
   cssDocsURL,
-  rnDocsURL,
   __guard__,
   isPropertyNamePrefix,
   toHyphen,
@@ -27,19 +23,19 @@ module.exports = {
   pseudoSelectors: CSS_COMPLETIONS.pseudoSelectors,
   rnProperties: RN_COMPLETIONS, // TODO: actually use this
 
-  getPseudoSelectorPrefix(text) {
+  getPseudoSelectorPrefix (text) {
     return __guard__(text.match(pseudoSelectorPrefixPattern), x => x[0])
   },
 
-  getPropertyNamePrefix(text) {
+  getPropertyNamePrefix (text) {
     return __guard__(propertyNamePrefixPattern.exec(text), x => x[0])
   },
 
-  isCompletingPseudoSelector(text) {
+  isCompletingPseudoSelector (text) {
     return this.getPseudoSelectorPrefix(text)
   },
 
-  isCompletingValue(text) {
+  isCompletingValue (text) {
     if (
       text.length - text.replace(/:/g, '').length ===
       text.length - text.replace(/,/g, '').length
@@ -53,12 +49,12 @@ module.exports = {
     )
   },
 
-  isCompletingName(text) {
+  isCompletingName (text) {
     const prefix = this.getPropertyNamePrefix(text)
     return isPropertyNamePrefix(prefix)
   },
 
-  getPseudoSelectorCompletions(text) {
+  getPseudoSelectorCompletions (text) {
     const completions = []
     const prefix = this.getPseudoSelectorPrefix(text).replace("'", '')
     const colonsFromText = text.trim().match(/:?:/)[0] || ''
@@ -66,29 +62,34 @@ module.exports = {
     if (!prefix) {
       return null
     }
-  
+
     for (let pseudoSelector in this.pseudoSelectors) {
       const options = this.pseudoSelectors[pseudoSelector]
       if (firstCharsEqual(pseudoSelector, prefix)) {
         completions.push(
-          this.buildPseudoSelectorCompletion(pseudoSelector, options, colonsFromText)
+          this.buildPseudoSelectorCompletion(
+            pseudoSelector,
+            options,
+            colonsFromText
+          )
         )
       }
     }
-  
+
     return completions
   },
 
-  getPropertyValueCompletions(text) {
+  getPropertyValueCompletions (text) {
     const prefix = this.getPropertyNamePrefix(text)
     const property = text.substr(0, text.lastIndexOf(':')).trim()
     const styles = this.properties
-    const values = styles[property] != null ? styles[property].values : undefined
-    
+    const values =
+      styles[property] != null ? styles[property].values : undefined
+
     if (values === null) {
       return null
     }
-    
+
     const addComma = !lineEndsWithComma(text)
     const completions = []
     let value
@@ -122,38 +123,58 @@ module.exports = {
     return completions
   },
 
-  getPropertyNameCompletions(text) {
+  getPropertyNameCompletions (text) {
     const prefix = this.getPropertyNamePrefix(text)
     const completions = []
     const styles = this.properties
     for (let property in styles) {
       const options = styles[property]
       if (!prefix || firstCharsEqual(property, prefix)) {
-        completions.push(
-          this.buildPropertyNameCompletion(property, options)
-        )
+        completions.push(this.buildPropertyNameCompletion(property, options))
       }
     }
     return completions
   },
 
   // TODO: DRY this up
-  buildPseudoSelectorCompletion(pseudoSelector, { description }, colonsFromText) {
-    return this.vsCompletionItem(pseudoSelector, description, `${cssDocsURL}/${pseudoSelector}`, pseudoSelector.replace(colonsFromText, ''))
+  buildPseudoSelectorCompletion (
+    pseudoSelector,
+    { description },
+    colonsFromText
+  ) {
+    return this.vsCompletionItem(
+      pseudoSelector,
+      description,
+      `${cssDocsURL}/${pseudoSelector}`,
+      pseudoSelector.replace(colonsFromText, '')
+    )
   },
 
-  buildPropertyNameCompletion(propertyName, { description }) {
-    return this.vsCompletionItem(propertyName, description, `${cssDocsURL}/${toHyphen(propertyName)}`, `${propertyName}: `)
+  buildPropertyNameCompletion (propertyName, { description }) {
+    return this.vsCompletionItem(
+      propertyName,
+      description,
+      `${cssDocsURL}/${toHyphen(propertyName)}`,
+      `${propertyName}: `
+    )
   },
 
-  buildPropertyValueCompletion(propertyName, value, addComma) {
+  buildPropertyValueCompletion (propertyName, value, addComma) {
     const text = `'${value}'${addComma ? ',' : ''}`
     const detail = `${value} value for the ${propertyName} property`
-    return this.vsCompletionItem(value, detail, `${cssDocsURL}/${toHyphen(propertyName)}#Values`, text)
+    return this.vsCompletionItem(
+      value,
+      detail,
+      `${cssDocsURL}/${toHyphen(propertyName)}#Values`,
+      text
+    )
   },
 
-  vsCompletionItem(text, detail, documentation = '', insertedText = false) {
-    const item = new vscode.CompletionItem(text, vscode.CompletionItemKind.Property)
+  vsCompletionItem (text, detail, documentation = '', insertedText = false) {
+    const item = new vscode.CompletionItem(
+      text,
+      vscode.CompletionItemKind.Property
+    )
     item.detail = detail
     item.documentation = documentation
     item.insertText = insertedText

@@ -95,5 +95,10 @@
     "galleryBanner": {
         "color": "#2b3e50",
         "theme": "dark"
+    },
+    "standard": {
+        "ignore": [
+          "dist/"
+        ]
     }
 }
