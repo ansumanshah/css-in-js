@@ -136,7 +136,6 @@ module.exports = {
     return completions
   },
 
-  // TODO: DRY this up
   buildPseudoSelectorCompletion (
     pseudoSelector,
     { description },

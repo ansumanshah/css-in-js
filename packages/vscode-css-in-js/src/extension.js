@@ -51,7 +51,6 @@ function activate (context) {
         const range = new vscode.Range(start, position)
         const text = document.getText(range)
 
-        // TODO: psuedo selectors
         if (autocomplete.isCompletingPseudoSelector(text)) {
           return autocomplete.getPseudoSelectorCompletions(text)
         }
