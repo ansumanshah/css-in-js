@@ -165,14 +165,15 @@ module.exports = {
       value,
       detail,
       `${cssDocsURL}/${toHyphen(propertyName)}#Values`,
-      text
+      text,
+      'Value'
     )
   },
 
-  vsCompletionItem (text, detail, documentation = '', insertedText = false) {
+  vsCompletionItem (text, detail, documentation = '', insertedText = false, itemKind = 'Keyword') {
     const item = new vscode.CompletionItem(
       text,
-      vscode.CompletionItemKind.Property
+      vscode.CompletionItemKind[itemKind]
     )
     item.detail = detail
     item.documentation = documentation
