@@ -169,7 +169,7 @@ module.exports = {
     )
   },
 
-  vsCompletionItem (text, detail, documentation = '', insertedText = false, itemKind = 'Keyword') {
+  vsCompletionItem (text, detail, documentation = '', insertedText = false, itemKind = 'Property') {
     const item = new vscode.CompletionItem(
       text,
       vscode.CompletionItemKind[itemKind]
