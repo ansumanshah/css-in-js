@@ -1,5 +1,7 @@
 import vscode from 'vscode'
 import {
+  CSS_COMPLETIONS,
+  RN_COMPLETIONS,
   firstCharsEqual,
   lineEndsWithComma,
   isPropertyValuePrefix,
@@ -14,9 +16,6 @@ import {
   toHyphen,
   getImportantPrefix
 } from 'css-in-js-helpers'
-
-const CSS_COMPLETIONS = require('../completions-css.json')
-const RN_COMPLETIONS = require('../completions-rn.json')
 
 module.exports = {
   properties: CSS_COMPLETIONS.properties,
