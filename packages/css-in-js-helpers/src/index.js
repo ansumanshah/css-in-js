@@ -1,3 +1,6 @@
+const CSS_COMPLETIONS = require('../completions-css.json')
+const RN_COMPLETIONS = require('../completions-rn.json')
+
 const getBeginningWhitespace = string =>
   string.match(/^\s+/) !== null ? string.match(/^\s+/)[0] : ''
 
@@ -77,6 +80,8 @@ export default function convert(s) {
 }
 
 export {
+  CSS_COMPLETIONS,
+  RN_COMPLETIONS,
   firstCharsEqual,
   lineEndsWithComma,
   isPropertyValuePrefix,
