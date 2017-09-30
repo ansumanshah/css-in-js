@@ -1,3 +1,6 @@
+## 1.0.0
+- Add autocompletion 💪
+
 ## 0.3.0
 - Add support for typescript files
 
