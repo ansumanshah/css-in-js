@@ -1,4 +1,4 @@
-# CSS in JS
+# [CSS in JS for VS Code](https://marketplace.visualstudio.com/items?itemName=paulmolluzzo.convert-css-in-js)
 
 > Provides CSS in JS autocompletion and converts kebab-case CSS to camelCase CSS and vice versa
 
