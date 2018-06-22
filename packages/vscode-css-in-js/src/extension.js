@@ -29,7 +29,7 @@ function activate (context) {
       // return if there's no editor or it's not a javascript file
       if (
         !editor ||
-        !/javascript|typescript|javascriptreact/.test(editor.document.languageId)
+        !/javascript|typescript/.test(editor.document.languageId)
       ) {
         return
       }
