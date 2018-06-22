@@ -42,7 +42,9 @@
     ],
     "activationEvents": [
         "onCommand:extension.convertCSSinJS",
-        "onLanguage:javascript"
+        "onLanguage:javascript",
+        "onLanguage:javascriptreact",
+        "onLanguage:typescript"
     ],
     "main": "./dist/extension.js",
     "contributes": {
