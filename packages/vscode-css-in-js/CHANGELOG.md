@@ -1,3 +1,6 @@
+## 1.1.0
+- Add support for typescript and javascriptreact to package.json
+
 ## 1.0.0
 - Add autocompletion 💪
 
