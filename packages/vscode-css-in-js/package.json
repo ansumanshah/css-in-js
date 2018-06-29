@@ -2,7 +2,7 @@
     "name": "convert-css-in-js",
     "displayName": "CSS-in-JS",
     "description": "CSS-in-JS autocomplete and conversion",
-    "version": "1.0.0",
+    "version": "1.1.1",
     "publisher": "paulmolluzzo",
     "author": {
         "email": "paul@molluzzo.com",
