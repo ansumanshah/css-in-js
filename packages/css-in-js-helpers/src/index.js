@@ -9,10 +9,15 @@ const isCSS = item => (item.match(/;/g) || []).length === 1
 const isJS = item => (item.match(/,/g) || []).length === 1
 
 const toHyphen = prop =>
-  prop.replace(/([A-Z])/g, char => `-${char[0].toLowerCase()}`)
+  // Special case for `-ms` because in JS it starts with `ms` unlike `Webkit`
+  prop
+    .replace(/([A-Z])/g, char => `-${char[0].toLowerCase()}`)
+    .replace(/^ms-/, '-ms-')
 
 const toCamel = prop =>
-  prop.replace(/-(\w|$)/g, (dash, next) => next.toUpperCase())
+  prop
+    .replace(/^-ms-/, 'ms-')
+    .replace(/-(\w|$)/g, (dash, next) => next.toUpperCase())
 
 const toJS = item => {
   const [prop, val] = item.split(':')
@@ -28,11 +33,13 @@ const toCSS = item => {
   )}: ${val.trim().replace(/'|,/g, '')};`
 }
 
-const firstCharsEqual = (str1, str2) => str1[0].toLowerCase() === str2[0].toLowerCase()
+const firstCharsEqual = (str1, str2) =>
+  str1[0].toLowerCase() === str2[0].toLowerCase()
 
 const lineEndsWithComma = text => /,\s*$/.test(text)
 
-const isPropertyValuePrefix = prefix => prefix.trim().length > 0 && prefix.trim() !== ':'
+const isPropertyValuePrefix = prefix =>
+  prefix.trim().length > 0 && prefix.trim() !== ':'
 
 const firstInlinePropertyNameWithColonPattern = /(?:{{|{)\s*(\S+)\s*:/
 
@@ -98,5 +105,5 @@ export {
   __guard__,
   isPropertyNamePrefix,
   toHyphen,
-  getImportantPrefix
+  getImportantPrefix,
 }
