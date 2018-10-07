@@ -1,5 +1,6 @@
 const CSS_COMPLETIONS = require('../completions-css.json')
 const RN_COMPLETIONS = require('../completions-rn.json')
+const UNITLESS_PROPS = require('../unitless-properties.json')
 
 const getBeginningWhitespace = string =>
   string.match(/^\s+/) !== null ? string.match(/^\s+/)[0] : ''
@@ -16,23 +17,48 @@ const toCamel = prop =>
 
 const toJS = item => {
   const [prop, val] = item.split(':')
-  return `${getBeginningWhitespace(prop)}${toCamel(
-    prop.trim()
-  )}: '${val.trim().replace(';', '')}',`
+
+  let value = val
+    .trim()
+    .replace(';', '')
+    .replace(/^(\d+)px/, '$1')
+
+  if (!/^\d+$/.test(value)) {
+    value = `'${value}'`
+  }
+
+  return `${getBeginningWhitespace(prop)}${toCamel(prop.trim())}: ${value},`
 }
 
 const toCSS = item => {
   const [prop, val] = item.split(':')
-  return `${getBeginningWhitespace(prop)}${toHyphen(
-    prop.trim()
-  )}: ${val.trim().replace(/'|,/g, '')};`
+
+  let value = val.trim().replace(/'|,/g, '')
+
+  if (
+    /^\d+$/.test(value) &&
+    !UNITLESS_PROPS.includes(
+      prop
+        .trim()
+        .replace(
+          /^(Webkit|Moz|O|ms)([A-Z])(.+)$/,
+          (match, p1, p2, p3) => `${p2.toLowerCase()}${p3}`
+        )
+    )
+  ) {
+    value += 'px'
+  }
+
+  return `${getBeginningWhitespace(prop)}${toHyphen(prop.trim())}: ${value};`
 }
 
-const firstCharsEqual = (str1, str2) => str1[0].toLowerCase() === str2[0].toLowerCase()
+const firstCharsEqual = (str1, str2) =>
+  str1[0].toLowerCase() === str2[0].toLowerCase()
 
 const lineEndsWithComma = text => /,\s*$/.test(text)
 
-const isPropertyValuePrefix = prefix => prefix.trim().length > 0 && prefix.trim() !== ':'
+const isPropertyValuePrefix = prefix =>
+  prefix.trim().length > 0 && prefix.trim() !== ':'
 
 const firstInlinePropertyNameWithColonPattern = /(?:{{|{)\s*(\S+)\s*:/
 
@@ -98,5 +124,5 @@ export {
   __guard__,
   isPropertyNamePrefix,
   toHyphen,
-  getImportantPrefix
+  getImportantPrefix,
 }
