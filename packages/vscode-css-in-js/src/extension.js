@@ -44,7 +44,7 @@ function activate (context) {
     }
   )
   const codeCompletion = vscode.languages.registerCompletionItemProvider(
-    'javascript',
+    ['javascript', 'typescript'],
     {
       provideCompletionItems (document, position, token) {
         const start = new vscode.Position(position.line, 0)
