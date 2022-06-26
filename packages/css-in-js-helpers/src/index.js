@@ -4,9 +4,14 @@ const RN_COMPLETIONS = require('../completions-rn.json')
 const getBeginningWhitespace = string =>
   string.match(/^\s+/) !== null ? string.match(/^\s+/)[0] : ''
 
-const isCSS = item => (item.match(/;/g) || []).length === 1
+// return if the item ends with ; and such semi-colon the only one in the item
+const isCSS = item =>
+  item.trim().endsWith(';') && (item.match(/;/g) || []).length == 1
 
-const isJS = item => (item.match(/,/g) || []).length === 1
+// return if the item ends with , such comma is the only one which is not wrapped with quotes
+const isJS = item =>
+  item.trim().endsWith(',') &&
+  item.match(/(,)(?=(?:[^"']|("|')[^"']*("|'))*$)/g).length === 1
 
 const toHyphen = prop =>
   prop.replace(/([A-Z])/g, char => `-${char[0].toLowerCase()}`)
@@ -15,17 +20,26 @@ const toCamel = prop =>
   prop.replace(/-(\w|$)/g, (dash, next) => next.toUpperCase())
 
 const toJS = item => {
-  const [prop, val] = item.split(':')
+  let [prop, val] = item.split(/:(.+)/, 2) // in case of bg-url, the value might contain colon :
+  val = val.trim().slice(0, -1) // remove trailing semi-colon
+  let wrappingQuotes = "'" // handle if the property already contains quotes
+  if (!isNaN(val)) {
+    wrappingQuotes = ''
+  } else if (val.includes("'") && val.includes('"')) {
+    return item
+  } else if (val.includes("'")) {
+    wrappingQuotes = '"'
+  }
   return `${getBeginningWhitespace(prop)}${toCamel(
     prop.trim()
-  )}: '${val.trim().replace(';', '')}',`
+  )}: ${wrappingQuotes}${val}${wrappingQuotes},`
 }
 
 const toCSS = item => {
-  const [prop, val] = item.split(':')
-  return `${getBeginningWhitespace(prop)}${toHyphen(
-    prop.trim()
-  )}: ${val.trim().replace(/'|,/g, '')};`
+  let [prop, val] = item.split(/:(.+)/, 2)
+  val = val.trim().slice(0, -1) // remove trailing comma
+  return `${getBeginningWhitespace(prop)}${toHyphen(prop.trim())}: ${isNaN(val.trim()) ? val.slice(1, -1) : Number(val)
+    };`
 }
 
 const firstCharsEqual = (str1, str2) => str1[0].toLowerCase() === str2[0].toLowerCase()

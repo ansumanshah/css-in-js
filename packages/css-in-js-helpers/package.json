@@ -1,6 +1,6 @@
 {
   "name": "css-in-js-helpers",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "CSS in JS helpers",
   "main": "dist/index.js",
   "scripts": {
