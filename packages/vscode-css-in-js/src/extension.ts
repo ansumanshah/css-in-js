@@ -17,12 +17,10 @@ export function activate(context) {
       }
 
       const selection = editor.selection
-      const lineText = editor.document.lineAt(selection.start.line).text
       const selectedText = editor.document.getText(selection)
-      const convertableText = selectedText || lineText
 
       editor.edit(builder => {
-        builder.replace(editor.selection, convert(convertableText))
+        builder.replace(editor.selection, convert(selectedText))
       })
     }
   )
