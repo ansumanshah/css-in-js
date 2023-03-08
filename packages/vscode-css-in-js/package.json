@@ -1,108 +1,104 @@
 {
-    "name": "convert-css-in-js",
-    "displayName": "CSS-in-JS",
-    "description": "CSS-in-JS autocomplete and conversion",
-    "version": "1.1.0",
-    "publisher": "paulmolluzzo",
-    "author": {
-        "email": "paul@molluzzo.com",
-        "name": "Paul Molluzzo",
-        "url": "https://paul.molluzzo.com"
-    },
-    "license": "MIT",
-    "homepage": "https://github.com/ansumanshah/css-in-js",
-    "bugs": {
-        "url": "https://github.com/ansumanshah/css-in-js/issues"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/ansumanshah/css-in-js.git"
-    },
-    "engines": {
-        "vscode": "^1.13.0"
-    },
-    "scripts": {
-        "build": "babel src -d dist",
-        "postinstall": "npm run build",
-        "vscode:prepublish": "npm run build",
-        "prettier": "prettier-standard 'src/**/*.js'",
-        "lint": "standard"
-    },
-    "categories": [
-        "Other",
-        "Formatters",
-        "Snippets"
+  "name": "convert-css-in-js",
+  "displayName": "CSS-in-JS",
+  "description": "CSS-in-JS autocomplete and conversion",
+  "version": "1.1.0",
+  "publisher": "paulmolluzzo",
+  "author": {
+    "email": "paul@molluzzo.com",
+    "name": "Paul Molluzzo",
+    "url": "https://paul.molluzzo.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/ansumanshah/css-in-js",
+  "bugs": {
+    "url": "https://github.com/ansumanshah/css-in-js/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ansumanshah/css-in-js.git"
+  },
+  "engines": {
+    "vscode": "^1.13.0"
+  },
+  "scripts": {
+    "build": "esbuild ./src/extension --format=cjs --bundle \"--alias:css-in-js-helpers=./../css-in-js-helpers/src/index.js\" --platform=node --external:vscode --outfile=./dist/extension.js",
+    "postinstall": "npm run build",
+    "vscode:prepublish": "npm run build",
+    "prettier": "prettier-standard 'src/**/*.js'",
+    "lint": "standard"
+  },
+  "categories": [
+    "Other",
+    "Formatters",
+    "Snippets"
+  ],
+  "keywords": [
+    "css",
+    "css-in-js",
+    "keybindings",
+    "javascript",
+    "autocomplete"
+  ],
+  "activationEvents": [
+    "onCommand:extension.convertCSSinJS",
+    "onLanguage:javascript",
+    "onLanguage:javascriptreact",
+    "onLanguage:typescript"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.convertCSSinJS",
+        "title": "Convert CSS-in-JS"
+      }
     ],
-    "keywords": [
-        "css",
-        "css-in-js",
-        "keybindings",
-        "javascript",
-        "autocomplete"
-    ],
-    "activationEvents": [
-        "onCommand:extension.convertCSSinJS",
-        "onLanguage:javascript",
-        "onLanguage:javascriptreact",
-        "onLanguage:typescript"
-    ],
-    "main": "./dist/extension.js",
-    "contributes": {
-        "commands": [
-            {
-                "command": "extension.convertCSSinJS",
-                "title": "Convert CSS-in-JS"
-            }
-        ],
-        "configurationDefaults": {
-            "[javascript]": {
-                "editor.quickSuggestions": {
-                    "other": true,
-                    "comments": true,
-                    "strings": true
-                }
-            }
-        },
-        "keybindings": [
-            {
-                "command": "extension.convertCSSinJS",
-                "key": "ctrl+shift+j",
-                "mac": "cmd+shift+j",
-                "when": "editorTextFocus"
-            }
-        ]
-    },
-    "capabilities": {
-        "completionProvider": {
-            "resolveProvider": "true",
-            "triggerCharacters": [
-                "."
-            ]
+    "configurationDefaults": {
+      "[javascript]": {
+        "editor.quickSuggestions": {
+          "other": true,
+          "comments": true,
+          "strings": true
         }
+      }
     },
-    "devDependencies": {
-        "@types/node": "^6.0.40",
-        "babel-cli": "^6.24.1",
-        "babel-core": "^6.25.0",
-        "babel-loader": "^7.1.1",
-        "babel-preset-env": "^1.6.0",
-        "babel-preset-es2015": "^6.24.1",
-        "prettier": "^1.5.2",
-        "prettier-standard": "^6.0.0",
-        "standard": "^10.0.2",
-        "vscode": "^1.0.0"
-    },
-    "dependencies": {
-        "css-in-js-helpers": "^1.0.1"
-    },
-    "icon": "icon.png",
-    "galleryBanner": {
-        "color": "#2b3e50",
-        "theme": "dark"
-    },
-    "standard": {
-        "ignore": [
-            "dist/"
-        ]
+    "keybindings": [
+      {
+        "command": "extension.convertCSSinJS",
+        "key": "ctrl+shift+j",
+        "mac": "cmd+shift+j",
+        "when": "editorTextFocus"
+      }
+    ]
+  },
+  "capabilities": {
+    "completionProvider": {
+      "resolveProvider": "true",
+      "triggerCharacters": [
+        "."
+      ]
     }
+  },
+  "devDependencies": {
+    "@types/node": "^6.0.40",
+    "@types/vscode": "^1.76.0",
+    "esbuild": "^0.17.11",
+    "prettier": "^1.5.2",
+    "prettier-standard": "^6.0.0",
+    "standard": "^10.0.2"
+  },
+  "dependencies": {
+    "css-in-js-helpers": "^1.0.1"
+  },
+  "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#2b3e50",
+    "theme": "dark"
+  },
+  "standard": {
+    "ignore": [
+      "dist/"
+    ]
+  }
 }
