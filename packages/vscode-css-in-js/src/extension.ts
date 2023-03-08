@@ -17,11 +17,8 @@ export function activate(context) {
       }
 
       const selection = editor.selection
-      // console.log(selection);
       const lineText = editor.document.lineAt(selection.start.line).text
-      // console.log(lineText);
       const selectedText = editor.document.getText(selection)
-      // console.log(selectedText);
       const convertableText = selectedText || lineText
 
       editor.edit(builder => {
