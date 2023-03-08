@@ -36,7 +36,6 @@ const toJS = (item) => {
 }
 
 const toCSS = (item) => {
-  console.log('from css', item)
   let [prop, val] = item.split(/:(.+)/, 2)
   val = val.trim().slice(0, -1) // remove trailing comma
   return `${getBeginningWhitespace(prop)}${toHyphen(prop.trim())}: ${
