@@ -1,29 +1,16 @@
 {
-	"private": true,
-	"scripts": {
-		"format": "prettier --trailing-comma es5 --no-semi --single-quote --write 'packages/*/*.js' 'packages/*/!(node_modules)/**/*.js'",
-		"precommit": "lint-staged"
-	},
-  "devDependencies": {
-    "husky": "^0.14.3",
-    "lerna": "^2.1.2",
-    "lint-staged": "^4.1.0",
-    "prettier": "^1.6.1"
+  "private": true,
+  "scripts": {
+    "format": "prettier --ignore-unknown --write"
   },
-	"author": "Ansuman Shah",
+  "devDependencies": {
+    "prettier": "^2.8.4"
+  },
+  "author": "Ansuman Shah",
   "homepage": "https://github.com/ansumanshah/css-in-js#readme",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ansumanshah/css-in-js.git"
-  },
-  "lint-staged": {
-    "*.js": [
-      "prettier --trailing-comma es5 --no-semi --single-quote --write",
-      "git add"
-    ],
-    "yarn.lock": [
-      "git rm --cached"
-    ]
   }
 }

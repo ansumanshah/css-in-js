@@ -1,25 +1,25 @@
 const CSS_COMPLETIONS = require('../completions-css.json')
 const RN_COMPLETIONS = require('../completions-rn.json')
 
-const getBeginningWhitespace = string =>
+const getBeginningWhitespace = (string) =>
   string.match(/^\s+/) !== null ? string.match(/^\s+/)[0] : ''
 
 // return if the item ends with ; and such semi-colon the only one in the item
-const isCSS = item =>
+const isCSS = (item) =>
   item.trim().endsWith(';') && (item.match(/;/g) || []).length == 1
 
 // return if the item ends with , such comma is the only one which is not wrapped with quotes
-const isJS = item =>
+const isJS = (item) =>
   item.trim().endsWith(',') &&
   item.match(/(,)(?=(?:[^"']|("|')[^"']*("|'))*$)/g).length === 1
 
-const toHyphen = prop =>
-  prop.replace(/([A-Z])/g, char => `-${char[0].toLowerCase()}`)
+const toHyphen = (prop) =>
+  prop.replace(/([A-Z])/g, (char) => `-${char[0].toLowerCase()}`)
 
-const toCamel = prop =>
+const toCamel = (prop) =>
   prop.replace(/-(\w|$)/g, (dash, next) => next.toUpperCase())
 
-const toJS = item => {
+const toJS = (item) => {
   let [prop, val] = item.split(/:(.+)/, 2) // in case of bg-url, the value might contain colon :
   val = val.trim().slice(0, -1) // remove trailing semi-colon
   let wrappingQuotes = "'" // handle if the property already contains quotes
@@ -35,19 +35,22 @@ const toJS = item => {
   )}: ${wrappingQuotes}${val}${wrappingQuotes},`
 }
 
-const toCSS = item => {
+const toCSS = (item) => {
   console.log('from css', item)
   let [prop, val] = item.split(/:(.+)/, 2)
   val = val.trim().slice(0, -1) // remove trailing comma
-  return `${getBeginningWhitespace(prop)}${toHyphen(prop.trim())}: ${isNaN(val.trim()) ? val.slice(1, -1) : Number(val)
-    };`
+  return `${getBeginningWhitespace(prop)}${toHyphen(prop.trim())}: ${
+    isNaN(val.trim()) ? val.slice(1, -1) : Number(val)
+  };`
 }
 
-const firstCharsEqual = (str1, str2) => str1[0].toLowerCase() === str2[0].toLowerCase()
+const firstCharsEqual = (str1, str2) =>
+  str1[0].toLowerCase() === str2[0].toLowerCase()
 
-const lineEndsWithComma = text => /,\s*$/.test(text)
+const lineEndsWithComma = (text) => /,\s*$/.test(text)
 
-const isPropertyValuePrefix = prefix => prefix.trim().length > 0 && prefix.trim() !== ':'
+const isPropertyValuePrefix = (prefix) =>
+  prefix.trim().length > 0 && prefix.trim() !== ':'
 
 const firstInlinePropertyNameWithColonPattern = /(?:{{|{)\s*(\S+)\s*:/
 
@@ -84,13 +87,13 @@ function isPropertyNamePrefix(prefix) {
 }
 
 function getImportantPrefix(text) {
-  return __guard__(importantPrefixPattern.exec(text), x => x[1])
+  return __guard__(importantPrefixPattern.exec(text), (x) => x[1])
 }
 
 export default function convert(s) {
   const lines = s.split('\n')
   return lines
-    .map(item => (isCSS(item) ? toJS(item) : isJS(item) ? toCSS(item) : item))
+    .map((item) => (isCSS(item) ? toJS(item) : isJS(item) ? toCSS(item) : item))
     .join('\n')
 }
 
@@ -113,5 +116,5 @@ export {
   __guard__,
   isPropertyNamePrefix,
   toHyphen,
-  getImportantPrefix
+  getImportantPrefix,
 }

@@ -7,6 +7,7 @@
     "update-css": "node scripts/css/completions.js",
     "update-rn": "node scripts/rn/completions.js",
     "build": "babel src -d dist",
+    "format": "prettier \"src/**/*\" --write -u",
     "postinstall": "npm run build"
   },
   "repository": {
