@@ -1,8 +1,8 @@
 import convert from 'css-in-js-helpers'
-import vscode from 'vscode'
+import vscode, { ExtensionContext } from 'vscode'
 import autocomplete from './autocomplete'
 
-export function activate(context) {
+export function activate(context: ExtensionContext) {
   const convertCommand = vscode.commands.registerCommand(
     'extension.convertCSSinJS',
     () => {
@@ -19,7 +19,7 @@ export function activate(context) {
       const selection = editor.selection
       const selectedText = editor.document.getText(selection)
 
-      editor.edit(builder => {
+      editor.edit((builder) => {
         builder.replace(editor.selection, convert(selectedText))
       })
     }
