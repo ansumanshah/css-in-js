@@ -1,29 +1,29 @@
-const CSS_COMPLETIONS = require('../completions-css.json')
-const RN_COMPLETIONS = require('../completions-rn.json')
+export { default as CSS_COMPLETIONS } from '../completions-css.json'
+export { default as RN_COMPLETIONS } from '../completions-rn.json'
 
-const getBeginningWhitespace = (string) =>
+export const getBeginningWhitespace = (string: string) =>
   string.match(/^\s+/) !== null ? string.match(/^\s+/)[0] : ''
 
 // return if the item ends with ; and such semi-colon the only one in the item
-const isCSS = (item) =>
+export const isCSS = (item: string) =>
   item.trim().endsWith(';') && (item.match(/;/g) || []).length == 1
 
 // return if the item ends with , such comma is the only one which is not wrapped with quotes
-const isJS = (item) =>
+export const isJS = (item: string) =>
   item.trim().endsWith(',') &&
   item.match(/(,)(?=(?:[^"']|("|')[^"']*("|'))*$)/g).length === 1
 
-const toHyphen = (prop) =>
+export const toHyphen = (prop: string) =>
   prop.replace(/([A-Z])/g, (char) => `-${char[0].toLowerCase()}`)
 
-const toCamel = (prop) =>
+export const toCamel = (prop: string) =>
   prop.replace(/-(\w|$)/g, (dash, next) => next.toUpperCase())
 
-const toJS = (item) => {
+export const toJS = (item: string) => {
   let [prop, val] = item.split(/:(.+)/, 2) // in case of bg-url, the value might contain colon :
   val = val.trim().slice(0, -1) // remove trailing semi-colon
   let wrappingQuotes = "'" // handle if the property already contains quotes
-  if (!isNaN(val)) {
+  if (!isNaN(+val)) {
     wrappingQuotes = ''
   } else if (val.includes("'") && val.includes('"')) {
     return item
@@ -35,49 +35,54 @@ const toJS = (item) => {
   )}: ${wrappingQuotes}${val}${wrappingQuotes},`
 }
 
-const toCSS = (item) => {
+export const toCSS = (item: string) => {
   let [prop, val] = item.split(/:(.+)/, 2)
   val = val.trim().slice(0, -1) // remove trailing comma
   return `${getBeginningWhitespace(prop)}${toHyphen(prop.trim())}: ${
-    isNaN(val.trim()) ? val.slice(1, -1) : Number(val)
+    isNaN(+val.trim()) ? val.slice(1, -1) : Number(val)
   };`
 }
 
-const firstCharsEqual = (str1, str2) =>
+export const firstCharsEqual = (str1: string, str2: string) =>
   str1[0].toLowerCase() === str2[0].toLowerCase()
 
-const lineEndsWithComma = (text) => /,\s*$/.test(text)
+export const lineEndsWithComma = (text: string) => /,\s*$/.test(text)
 
-const isPropertyValuePrefix = (prefix) =>
+export const isPropertyValuePrefix = (prefix: string) =>
   prefix.trim().length > 0 && prefix.trim() !== ':'
 
-const firstInlinePropertyNameWithColonPattern = /(?:{{|{)\s*(\S+)\s*:/
+export const firstInlinePropertyNameWithColonPattern = /(?:{{|{)\s*(\S+)\s*:/
 
-const inlinePropertyNameWithColonPattern = /(?:,.+?)*,\s*(\S+)\s*:/
+export const inlinePropertyNameWithColonPattern = /(?:,.+?)*,\s*(\S+)\s*:/
 
-const inlinePropertyStartWithColonPattern = /(?::.+?)*,\s*/
+export const inlinePropertyStartWithColonPattern = /(?::.+?)*,\s*/
 
-const propertyNameWithColonPattern = /^\s*(\S+)\s*:/
+export const propertyNameWithColonPattern = /^\s*(\S+)\s*:/
 
-const propertyNamePrefixPattern = /[a-zA-Z]+[-a-zA-Z]*$/
+export const propertyNamePrefixPattern = /[a-zA-Z]+[-a-zA-Z]*$/
 
-const pseudoSelectorPrefixPattern = /\':(:)?([a-z]+[a-z-]*)?(\')?$/
+export const pseudoSelectorPrefixPattern = /\':(:)?([a-z]+[a-z-]*)?(\')?$/
 
-const tagSelectorPrefixPattern = /(^|\s|,)([a-z]+)?$/
+export const tagSelectorPrefixPattern = /(^|\s|,)([a-z]+)?$/
 
-const importantPrefixPattern = /(![a-z]+)$/
+export const importantPrefixPattern = /(![a-z]+)$/
 
-const cssDocsURL = 'https://developer.mozilla.org/en-US/docs/Web/CSS'
+export const cssDocsURL = 'https://developer.mozilla.org/en-US/docs/Web/CSS'
 
-const rnDocsURL = 'https://facebook.github.io/react-native/docs'
+export const rnDocsURL = 'https://facebook.github.io/react-native/docs'
 
-function __guard__(value, transform) {
+type RegExpArray = RegExpExecArray | RegExpMatchArray
+
+export function __guard__<T>(
+  value: RegExpArray | null | undefined,
+  transform: (value: RegExpArray) => T
+) {
   return typeof value !== 'undefined' && value !== null
     ? transform(value)
     : undefined
 }
 
-function isPropertyNamePrefix(prefix) {
+export function isPropertyNamePrefix(prefix: string) {
   if (prefix == null) {
     return false
   }
@@ -85,35 +90,13 @@ function isPropertyNamePrefix(prefix) {
   return prefix.length > 0 && prefix.match(/^[a-zA-Z-]+$/)
 }
 
-function getImportantPrefix(text) {
+export function getImportantPrefix(text: string) {
   return __guard__(importantPrefixPattern.exec(text), (x) => x[1])
 }
 
-export default function convert(s) {
+export default function convert(s: string) {
   const lines = s.split('\n')
   return lines
     .map((item) => (isCSS(item) ? toJS(item) : isJS(item) ? toCSS(item) : item))
     .join('\n')
-}
-
-export {
-  CSS_COMPLETIONS,
-  RN_COMPLETIONS,
-  firstCharsEqual,
-  lineEndsWithComma,
-  isPropertyValuePrefix,
-  firstInlinePropertyNameWithColonPattern,
-  inlinePropertyNameWithColonPattern,
-  inlinePropertyStartWithColonPattern,
-  propertyNameWithColonPattern,
-  propertyNamePrefixPattern,
-  pseudoSelectorPrefixPattern,
-  tagSelectorPrefixPattern,
-  importantPrefixPattern,
-  cssDocsURL,
-  rnDocsURL,
-  __guard__,
-  isPropertyNamePrefix,
-  toHyphen,
-  getImportantPrefix,
 }

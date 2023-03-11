@@ -1,12 +1,13 @@
 {
   "name": "css-in-js-helpers",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "CSS in JS helpers",
   "main": "dist/index.js",
+  "types": "src/index.ts",
   "scripts": {
     "update-css": "node scripts/css/completions.js",
     "update-rn": "node scripts/rn/completions.js",
-    "build": "babel src -d dist",
+    "build": "esbuild ./src/index --format=cjs --bundle --platform=node --outfile=./dist/index.js",
     "format": "prettier \"src/**/*\" --write -u"
   },
   "repository": {
@@ -23,9 +24,7 @@
   },
   "homepage": "https://github.com/ansumanshah/css-in-js#readme",
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-core": "^6.25.0",
-    "babel-preset-es2015": "^6.24.1"
+    "esbuild": "^0.17.11"
   },
   "dependencies": {
     "react-docgen": "^2.18.0",

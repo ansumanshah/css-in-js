@@ -13,7 +13,7 @@ import {
   pseudoSelectorPrefixPattern,
   RN_COMPLETIONS,
   toHyphen,
-  __guard__,
+  __guard__
 } from 'css-in-js-helpers'
 import vscode from 'vscode'
 
@@ -23,11 +23,11 @@ export default {
   rnProperties: RN_COMPLETIONS, // TODO: actually use this
 
   getPseudoSelectorPrefix(text) {
-    return __guard__(text.match(pseudoSelectorPrefixPattern), x => x[0])
+    return __guard__(text.match(pseudoSelectorPrefixPattern), (x) => x[0])
   },
 
   getPropertyNamePrefix(text) {
-    return __guard__(propertyNamePrefixPattern.exec(text), x => x[0])
+    return __guard__(propertyNamePrefixPattern.exec(text), (x) => x[0])
   },
 
   isCompletingPseudoSelector(text) {

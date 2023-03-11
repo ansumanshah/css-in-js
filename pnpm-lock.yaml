@@ -28,6 +28,7 @@ importers:
       babel-cli: ^6.24.1
       babel-core: ^6.25.0
       babel-preset-es2015: ^6.24.1
+      esbuild: ^0.17.11
       react-docgen: ^2.18.0
       request: ^2.82.0
     dependencies:
@@ -37,6 +38,7 @@ importers:
       babel-cli: 6.26.0
       babel-core: 6.26.3
       babel-preset-es2015: 6.24.1
+      esbuild: 0.17.11
 
   packages/vscode-css-in-js:
     specifiers:
