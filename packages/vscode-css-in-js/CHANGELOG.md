@@ -1,3 +1,6 @@
+## 1.1.1
+- Fixed convertion feature. Partially migrated to typescript
+
 ## 1.1.0
 - Add support for typescript and javascriptreact to package.json
 

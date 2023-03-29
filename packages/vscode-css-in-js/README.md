@@ -1,4 +1,4 @@
-# [CSS in JS for VS Code](https://marketplace.visualstudio.com/items?itemName=paulmolluzzo.convert-css-in-js)
+# [CSS in JS for VS Code](https://marketplace.visualstudio.com/items?itemName=XantreGodlike.convert-css-in-js-reborn)
 
 > Provides CSS in JS autocompletion and converts kebab-case CSS to camelCase CSS and vice versa
 
@@ -21,4 +21,4 @@ Or use the keyboard shortcut `cmd+shift+j` (`ctrl+shift+j` on Windows).
 
 MIT
 
-© 2017 Paul Molluzzo
+© 2023 Valerii Smirnov
