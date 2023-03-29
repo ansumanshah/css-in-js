@@ -1,7 +1,7 @@
 {
   "name": "css-in-js-helpers",
   "version": "1.0.3",
-  "private": "true",
+  "private": true,
   "description": "CSS in JS helpers",
   "main": "dist/index.js",
   "types": "src/index.ts",

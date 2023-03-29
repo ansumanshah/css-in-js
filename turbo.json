@@ -5,6 +5,9 @@
     "build": {
       "outputs": ["dist/**"],
       "dependsOn": ["^build"]
+    },
+    "vscode:publish": {
+      "dependsOn": ["^build"]
     }
   }
 }

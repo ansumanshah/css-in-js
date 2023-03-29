@@ -1,9 +1,9 @@
 {
-  "name": "convert-css-in-js",
+  "name": "convert-css-in-js-reborn",
   "displayName": "CSS-in-JS Reborn",
   "description": "CSS-in-JS Reborn autocomplete and conversion",
-  "version": "1.1.0",
-  "publisher": "paulmolluzzo",
+  "version": "1.1.1",
+  "publisher": "XantreGodlike",
   "author": {
     "email": "valerik007.vs@gmail.com",
     "name": "Valerii Smirnov",
@@ -19,11 +19,11 @@
     "url": "https://github.com/XantreGodlike/css-in-js.git"
   },
   "engines": {
-    "vscode": "^1.13.0"
+    "vscode": "^1.76.0"
   },
   "scripts": {
     "build": "esbuild ./src/extension --format=cjs --bundle \"--alias:css-in-js-helpers=./../css-in-js-helpers/dist/index.js\" --platform=node --external:vscode --outfile=./dist/extension.js",
-    "vscode:prepublish": "npm run build",
+    "vscode:publish": "vsce publish --no-dependencies",
     "format": "prettier \"src/**/*\" --write --ignore-unknown"
   },
   "categories": [
@@ -39,7 +39,6 @@
     "autocomplete"
   ],
   "activationEvents": [
-    "onCommand:extension.convertCSSinJS",
     "onLanguage:javascript",
     "onLanguage:javascriptreact",
     "onLanguage:typescript"

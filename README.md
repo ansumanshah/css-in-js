@@ -9,7 +9,7 @@ Now get Autocomplete for CSS in JS libraries using object styles.
 
 This is basically a fork of [css-in-js](https://github.com/ansumanshah/css-in-js)
 
-## [CSS in JS for VS Code](https://marketplace.visualstudio.com/items?itemName=paulmolluzzo.convert-css-in-js)
+## [CSS in JS for VS Code](https://marketplace.visualstudio.com/items?itemName=XantreGodlike.convert-css-in-js-reborn)
 
 > Provides CSS in JS autocompletion and converts kebab-case CSS to camelCase CSS and vice versa
 
