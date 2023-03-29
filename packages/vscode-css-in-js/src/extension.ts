@@ -27,7 +27,7 @@ export function activate(context: ExtensionContext) {
   const codeCompletion = vscode.languages.registerCompletionItemProvider(
     'javascript',
     {
-      provideCompletionItems(document, position, token) {
+      provideCompletionItems(document, position) {
         const start = new vscode.Position(position.line, 0)
         const range = new vscode.Range(start, position)
         const text = document.getText(range)

@@ -7,10 +7,10 @@
     "prettier": "^2.8.4"
   },
   "author": "Ansuman Shah",
-  "homepage": "https://github.com/ansumanshah/css-in-js#readme",
+  "homepage": "https://github.com/XantreGodlike/css-in-js#readme",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ansumanshah/css-in-js.git"
+    "url": "git+https://github.com/XantreGodlike/css-in-js.git"
   }
 }

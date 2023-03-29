@@ -1,6 +1,7 @@
 {
   "name": "css-in-js-helpers",
   "version": "1.0.3",
+  "private": "true",
   "description": "CSS in JS helpers",
   "main": "dist/index.js",
   "types": "src/index.ts",
@@ -12,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ansumanshah/css-in-js.git"
+    "url": "git+https://github.com/XantreGodlike/css-in-js.git"
   },
   "keywords": [
     "CSSinJS"
@@ -20,9 +21,9 @@
   "author": "Ansuman Shah",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ansumanshah/css-in-js/issues"
+    "url": "https://github.com/XantreGodlike/css-in-js/issues"
   },
-  "homepage": "https://github.com/ansumanshah/css-in-js#readme",
+  "homepage": "https://github.com/XantreGodlike/css-in-js#readme",
   "devDependencies": {
     "esbuild": "^0.17.11"
   },
