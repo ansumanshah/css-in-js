@@ -1,10 +1,5 @@
 {
   "extends": "../../tsconfig.json",
   "include": ["./src/*"],
-  "exclude": ["node_modules"],
-  "references": [
-    {
-      "path": "./../css-in-js-helpers"
-    }
-  ]
+  "exclude": ["node_modules"]
 }

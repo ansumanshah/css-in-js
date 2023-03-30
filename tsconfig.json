@@ -4,12 +4,9 @@
     "target": "es6",
     "lib": ["es6"],
     "esModuleInterop": true,
-    "emitDeclarationOnly": true,
     "allowSyntheticDefaultImports": true,
-    "composite": true,
     "declaration": true,
     "declarationMap": true,
-    "incremental": true,
     "resolveJsonModule": true
   },
   "exclude": ["**/node_modules"]
