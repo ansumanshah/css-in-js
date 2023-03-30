@@ -1,10 +1,13 @@
 {
   "private": true,
   "scripts": {
-    "format": "prettier --ignore-unknown --write"
+    "format": "prettier --ignore-unknown --write",
+    "lint": "turbo lint"
   },
   "devDependencies": {
-    "prettier": "^2.8.4"
+    "prettier": "^2.8.4",
+    "turbo": "^1.8.8",
+    "typescript": "^5.0.2"
   },
   "author": "XantreGodlike",
   "homepage": "https://github.com/XantreGodlike/css-in-js#readme",
@@ -12,8 +15,5 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/XantreGodlike/css-in-js.git"
-  },
-  "dependencies": {
-    "typescript": "^5.0.2"
   }
 }

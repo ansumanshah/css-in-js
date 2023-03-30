@@ -1,0 +1,22 @@
+name: Lint
+on:
+  push:
+    branches: ['master', 'main']
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  lint:
+    name: Run typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2.0.1
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm i
+      - name: Run tsc
+        run: pnpm lint
