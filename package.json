@@ -5,6 +5,7 @@
     "lint": "turbo lint"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.26.1",
     "prettier": "^2.8.4",
     "turbo": "^1.8.8",
     "typescript": "^5.0.2"

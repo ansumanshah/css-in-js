@@ -42,6 +42,5 @@ _Codemods for easy shifting between css-in-js libraries_
 [github-star]: https://github.com/XantreGodlike/css-in-js/stargazers
 [twitter]: https://twitter.com/intent/tweet?text=Check%20out%20Atom%20Autocomplete%20css-in-js!%20https://github.com/XantreGodlike/css-in-js%20%F0%9F%91%8D
 [twitter-badge]: https://img.shields.io/twitter/url/https/github.com/XantreGodlike/css-in-js.svg?style=social
-[package]: https://atom.io/packages/css-in-js
 [prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
 [prs]: http://makeapullrequest.com
