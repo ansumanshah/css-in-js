@@ -24,7 +24,8 @@
   "scripts": {
     "build": "esbuild ./src/extension --format=cjs --bundle \"--alias:css-in-js-helpers=./../css-in-js-helpers/dist/index.js\" --platform=node --external:vscode --outfile=./dist/extension.js",
     "vscode:publish": "vsce publish --no-dependencies",
-    "format": "prettier \"src/**/*\" --write --ignore-unknown"
+    "format": "prettier \"src/**/*\" --write --ignore-unknown",
+    "lint": "tsc --noEmit"
   },
   "categories": [
     "Other",

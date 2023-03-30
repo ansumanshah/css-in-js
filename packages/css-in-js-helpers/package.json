@@ -9,7 +9,8 @@
     "update-css": "node scripts/css/completions.js",
     "update-rn": "node scripts/rn/completions.js",
     "build": "esbuild ./src/index --format=cjs --bundle --platform=node --outfile=./dist/index.js",
-    "format": "prettier \"src/**/*\" --write -u"
+    "format": "prettier \"src/**/*\" --write -u",
+    "lint": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
@@ -18,7 +19,7 @@
   "keywords": [
     "CSSinJS"
   ],
-  "author": "Ansuman Shah",
+  "author": "XantreGodlike",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/XantreGodlike/css-in-js/issues"

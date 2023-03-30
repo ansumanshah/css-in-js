@@ -6,3 +6,5 @@ dist
 yarn.lock
 package-lock.json
 .turbo
+
+tsconfig.tsbuildinfo
